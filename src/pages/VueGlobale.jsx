@@ -18,7 +18,6 @@ import {
   Alert,
   AlertTitle,
   LinearProgress,
-  Tooltip,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
@@ -28,18 +27,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import InfoIcon from '@mui/icons-material/Info';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const getAlertSeverity = (status) => {
-  switch (status) {
-    case 'healthy':
-      return 'success';
-    case 'warning':
-      return 'warning';
-    case 'critical':
-      return 'erreur';
-    default:
-      return 'info';
-  }
-};
+
 
 const getAlertIcon = (status) => {
   switch (status) {
@@ -56,7 +44,6 @@ const getAlertIcon = (status) => {
 
 export default function VueGlobale({ disques }) {
   const muiTheme = useTheme();
-  const [expandedAlert, setExpandedAlert] = useState(null);
 
   const capaciteTotale = disques.reduce((sum, disk) => sum + disk.total, 0);
   const totalUtilise = disques.reduce((sum, disk) => sum + disk.used, 0);
